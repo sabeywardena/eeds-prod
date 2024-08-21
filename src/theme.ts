@@ -14,13 +14,17 @@ const theme = createTheme({
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
-    fontWeightBold: 800,
+    fontWeightBold: 900,
   },
   palette: {
     text: {
-      primary: '#898989',
+      primary: '#919191',
       secondary: "#fff"
     },
+    common: {
+      white: '#fff',
+      black: '#000'
+    }
   },
 });
 
