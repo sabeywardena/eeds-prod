@@ -61,7 +61,8 @@ const Header: React.FC = () => {
                 component="a"
                 href="/"
                 sx={{
-                  marginRight: 2,
+                  mr: 2,
+                  ml: 5,
                   color: theme.palette.common.black,
                   textDecoration: "none",
                   fontWeight: theme.typography.fontWeightBold,
