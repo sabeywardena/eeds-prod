@@ -56,7 +56,7 @@ const Header: React.FC = () => {
       <AppBar position="fixed" elevation={0} sx={appBarStyle}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box display="flex" alignItems="center" sx={{ flexGrow: 1, mt: 4 }}>
+            <Box display="flex" alignItems="center" sx={{ flexGrow: 1, mt: 4, mb: 2}}>
               <Box
                 component="a"
                 href="/"
