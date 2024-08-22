@@ -17,6 +17,9 @@ const theme = createTheme({
     fontWeightBold: 900,
   },
   palette: {
+    primary: {
+      main: '#000',
+    },
     text: {
       primary: '#919191',
       secondary: "#fff"

@@ -61,19 +61,19 @@ const ContactForm: React.FC = () => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  border: 'none', // Remove all borders
+                  border: 'none',
                 },
                 '& input': {
-                  borderBottom: '1px solid black', // Black bottom border
-                  paddingBottom: '8px', // Optional: add some padding to align with the text
-                  paddingLeft: '0px', // Optional: adjust padding to ensure border width alignment
-                  paddingRight: '0px', // Optional: adjust padding to ensure border width alignment
+                  borderBottom: '1px solid black',
+                  paddingBottom: '8px', 
+                  paddingLeft: '0px', 
+                  paddingRight: '0px', 
                 },
                 '&:hover input': {
-                  borderBottom: '1px solid black', // Maintain bottom border on hover
+                  borderBottom: '1px solid black', 
                 },
                 '&.Mui-focused input': {
-                  borderBottom: '1px solid black', // Maintain bottom border when focused
+                  borderBottom: '1px solid black', 
                 },
               },
             }}
@@ -93,26 +93,26 @@ const ContactForm: React.FC = () => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  border: 'none', // Remove all borders
+                  border: 'none', 
                 },
                 '& input': {
-                  borderBottom: '1px solid black', // Black bottom border
-                  paddingBottom: '8px', // Optional: add some padding to align with the text
-                  paddingLeft: '0px', // Optional: adjust padding to ensure border width alignment
-                  paddingRight: '0px', // Optional: adjust padding to ensure border width alignment
+                  borderBottom: '1px solid black', 
+                  paddingBottom: '8px', 
+                  paddingLeft: '0px', 
+                  paddingRight: '0px', 
                 },
                 '&:hover input': {
-                  borderBottom: '1px solid black', // Maintain bottom border on hover
+                  borderBottom: '1px solid black', 
                 },
                 '&.Mui-focused input': {
-                  borderBottom: '1px solid black', // Maintain bottom border when focused
+                  borderBottom: '1px solid black',
                 },
               },
             }}
           />
         </div>
         <div style={{ marginBottom: '16px' }}>
-          <Typography variant="body1">
+          <Typography variant="body1" gutterBottom>
             Type your message here:
           </Typography>
           <TextField
@@ -126,19 +126,16 @@ const ContactForm: React.FC = () => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  border: 'none', // Remove all borders
+                  border: '1px solid black', 
                 },
                 '& textarea': {
-                  borderBottom: '1px solid black', // Black bottom border
-                  paddingBottom: '8px', // Optional: add some padding to align with the text
-                  paddingLeft: '0px', // Optional: adjust padding to ensure border width alignment
-                  paddingRight: '0px', // Optional: adjust padding to ensure border width alignment
+                  borderBottom: 'none',
                 },
-                '&:hover textarea': {
-                  borderBottom: '1px solid black', // Maintain bottom border on hover
+                '&:hover fieldset': {
+                  border: '1px solid black', 
                 },
-                '&.Mui-focused textarea': {
-                  borderBottom: '1px solid black', // Maintain bottom border when focused
+                '&.Mui-focused fieldset': {
+                  border: '1px solid black', 
                 },
               },
             }}
