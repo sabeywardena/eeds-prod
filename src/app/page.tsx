@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { Box, Typography, Container } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import theme from "@/theme";
 import SocialSidebar from "@/component/landing-page/SocialSidebar";
 import AboutUsSection from "@/component/landing-page/AboutUsSection";
+import MeetStaff from "@/component/landing-page/MeetStaff";
+import Info from "@/component/landing-page/Info";
+import JoinNow from "@/component/landing-page/JoinNow";
 
 const sections = [
   { id: "section1", title: "Welcome to Our Website" },
@@ -39,10 +40,8 @@ const LandingPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -53,7 +52,6 @@ const LandingPage: React.FC = () => {
   return (
     <>
       <SocialSidebar color={sidebarColor} />
-      {/* Section 1: Background Image */}
       <Box
         id="section1"
         sx={{
@@ -94,7 +92,6 @@ const LandingPage: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Section 2: About Us */}
       <Box
         id="section2"
         sx={{
@@ -113,7 +110,6 @@ const LandingPage: React.FC = () => {
         <AboutUsSection/>
       </Box>
 
-      {/* Section 3: Services */}
       <Box
         id="section3"
         sx={{
@@ -129,10 +125,11 @@ const LandingPage: React.FC = () => {
           paddingLeft: "5%",
         }}
       >
-        <Container maxWidth="xl"></Container>
+        <Container maxWidth="xl">
+          <MeetStaff/>
+        </Container>
       </Box>
 
-      {/* Section 4: Portfolio */}
       <Box
         id="section4"
         sx={{
@@ -148,10 +145,11 @@ const LandingPage: React.FC = () => {
           paddingLeft: "5%",
         }}
       >
-        <Container maxWidth="xl"></Container>
+        <Container maxWidth="xl">
+          <Info/>
+        </Container>
       </Box>
 
-      {/* Section 5: Contact Us */}
       <Box
         id="section5"
         sx={{
@@ -167,7 +165,9 @@ const LandingPage: React.FC = () => {
           paddingLeft: "5%",
         }}
       >
-        <Container maxWidth="xl"></Container>
+        <Container maxWidth="xl">
+          <JoinNow/>
+        </Container>
       </Box>
     </>
   );

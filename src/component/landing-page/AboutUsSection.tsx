@@ -98,7 +98,7 @@ const AboutUsSection: React.FC = () => {
           <Box
             sx={{
               flexShrink: 0, 
-              pr: 9,
+              pr: 15,
             }}
           >
             <Image
