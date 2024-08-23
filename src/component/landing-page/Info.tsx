@@ -70,7 +70,7 @@ const Info: React.FC = () => {
             students with both the tools and environment to master our
             educational goals.  We have monthly and quarterly expectations for
             our staff and through this well-planned program, we strive to bring
-            great self confidence to each of our students.  A young woman's self
+            great self confidence to each of our students.  A young womans self
             confidence and expression is of the utmost importance to EEDS and
             our mission. 
           </Typography>
