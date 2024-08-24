@@ -63,7 +63,7 @@ const Header: React.FC = () => {
       position: "absolute",
       bottom: 0,
       left: 0,
-      width: pathname === path ? "90%" : "0%",
+      width: pathname === path ? "100%" : "0%",
       height: "3px",
       backgroundColor:
         isTop && pathname === "/"
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
     "&:hover": {
       color: color,
       "&::after": {
-        width: "90%",
+        width: "100%",
         backgroundColor: color,
       },
     },
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
       },
     },
     "&::after": {
-      width: "90%",
+      width: "100%",
     },
   };
 

@@ -34,7 +34,7 @@ const Sidebar: React.FC = () => {
       }}
     >
       <IconButton onClick={toggleDrawer(true)}>
-        <MenuIcon />
+      <MenuIcon sx={{ fontSize: 40 }} />
       </IconButton>
       <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
         <List>

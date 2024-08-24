@@ -62,7 +62,7 @@ const AboutUsSection: React.FC = () => {
                 textAlign: "left",
               }}
             >
-              SEASON 12 STARTS SEPTEMBER 4
+              SEASON 12 STARTS SEPTEMBER 12
             </Typography>
             <Typography
               variant="body1"
