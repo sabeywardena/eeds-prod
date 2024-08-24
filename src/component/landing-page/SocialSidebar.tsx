@@ -38,7 +38,7 @@ const SocialSidebar: React.FC<SocialSidebarProps> = ({ color }) => {
       >
         <IconButton
           component="a"
-          href="https://www.instagram.com/yourprofile"
+          href="https://www.instagram.com/essentialelementsds"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
@@ -50,7 +50,7 @@ const SocialSidebar: React.FC<SocialSidebarProps> = ({ color }) => {
         </IconButton>
         <IconButton
           component="a"
-          href="https://www.facebook.com/yourprofile"
+          href="https://www.facebook.com/Essentialelementsds"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
