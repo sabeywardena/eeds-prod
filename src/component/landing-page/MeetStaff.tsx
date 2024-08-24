@@ -107,6 +107,20 @@ In March of 2019, he performed in the American College Dance Association Gala at
           Meet The Staff
         </Typography>
 
+        <Typography
+          variant="body1"
+          component="div"
+          sx={{
+            fontWeight: theme.typography.fontWeightBold,
+            color: theme.palette.common.black,
+            textAlign: "center",
+            mb: 5,
+            pr: 15,
+          }}
+        >
+          Click on each headshot to read more about our esteemed staff members!
+        </Typography>
+
         {/* Two Pictures Centered */}
         <Box
           sx={{
