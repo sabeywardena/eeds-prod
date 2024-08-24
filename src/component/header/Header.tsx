@@ -5,6 +5,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 import { usePathname } from "next/navigation";
 import theme from "@/theme";
 import { useState, useEffect } from "react";
@@ -13,6 +17,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const [isTop, setIsTop] = useState(true);
   const [inSectionOne, setInSectionOne] = useState(true);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +36,14 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   const appBarStyle = {
     backgroundColor:
@@ -103,14 +116,21 @@ const Header: React.FC = () => {
       <AppBar position="fixed" elevation={0} sx={appBarStyle}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box display="flex" alignItems="center" sx={{ flexGrow: 1, mt: 4, mb: 2 }}>
+            <Box
+              display="flex"
+              alignItems="center"
+              sx={{ flexGrow: 1, mt: 4, mb: 2 }}
+            >
               <Box
                 component="a"
                 href="/"
                 sx={{
                   mr: 2,
                   ml: 5,
-                  color: isTop && pathname === "/" ? "#fff" : theme.palette.common.black,
+                  color:
+                    isTop && pathname === "/"
+                      ? "#fff"
+                      : theme.palette.common.black,
                   textDecoration: "none",
                   fontWeight: theme.typography.fontWeightBold,
                 }}
@@ -124,11 +144,18 @@ const Header: React.FC = () => {
                 </Typography>
               </Box>
               <Box
-                display="flex"
-                alignItems="center"
-                sx={{ flexGrow: 1, justifyContent: "center", gap: 7 }}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "center",
+                  gap: 7,
+                }}
               >
-                <Box component="a" href="/about" sx={getLinkStyle("/about", "#0075c4")}>
+                <Box
+                  component="a"
+                  href="/about"
+                  sx={getLinkStyle("/about", "#0075c4")}
+                >
                   <Typography
                     variant="h6"
                     component="span"
@@ -137,7 +164,11 @@ const Header: React.FC = () => {
                     About
                   </Typography>
                 </Box>
-                <Box component="a" href="/gallery" sx={getLinkStyle("/gallery", "#ffcf56")}>
+                <Box
+                  component="a"
+                  href="/gallery"
+                  sx={getLinkStyle("/gallery", "#ffcf56")}
+                >
                   <Typography
                     variant="h6"
                     component="span"
@@ -146,7 +177,11 @@ const Header: React.FC = () => {
                     Gallery
                   </Typography>
                 </Box>
-                <Box component="a" href="/the-company" sx={getLinkStyle("/the-company", "#74a57f")}>
+                <Box
+                  component="a"
+                  href="/the-company"
+                  sx={getLinkStyle("/the-company", "#74a57f")}
+                >
                   <Typography
                     variant="h6"
                     component="span"
@@ -155,7 +190,11 @@ const Header: React.FC = () => {
                     The Company
                   </Typography>
                 </Box>
-                <Box component="a" href="/schedules" sx={getLinkStyle("/schedules", "#5e503f")}>
+                <Box
+                  component="a"
+                  href="/schedules"
+                  sx={getLinkStyle("/schedules", "#5e503f")}
+                >
                   <Typography
                     variant="h6"
                     component="span"
@@ -165,7 +204,9 @@ const Header: React.FC = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box sx={{ marginLeft: "auto" }}>
+              <Box
+                sx={{ display: { xs: "none", md: "flex" }, marginLeft: "auto" }}
+              >
                 <Box component="a" href="/register" sx={registerLinkStyle}>
                   <Typography
                     variant="h6"
@@ -175,6 +216,127 @@ const Header: React.FC = () => {
                     Register Now
                   </Typography>
                 </Box>
+              </Box>
+
+              {/* Hamburger Menu for Small Screens */}
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="menu"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  sx={{
+                    color:
+                      isTop && pathname === "/"
+                        ? inSectionOne
+                          ? "#fff"
+                          : "#000"
+                        : "#000",
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                >
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">
+                      <Box
+                        component="a"
+                        href="/about"
+                        sx={{
+                          ...getLinkStyle("/about", "#0075c4"),
+                          color: theme.palette.primary.main,
+                        }}
+                      >
+                        About
+                      </Box>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">
+                      <Box
+                        component="a"
+                        href="/gallery"
+                        sx={{
+                          ...getLinkStyle("/gallery", "#ffcf56"),
+                          color: theme.palette.primary.main,
+                        }}
+                      >
+                        Gallery
+                      </Box>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">
+                      <Box
+                        component="a"
+                        href="/the-company"
+                        sx={{
+                          ...getLinkStyle("/the-company", "#74a57f"),
+                          color: theme.palette.primary.main,
+                        }}
+                      >
+                        The Company
+                      </Box>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      color: theme.palette.primary.main,
+                    }}
+                  >
+                    <Typography textAlign="center">
+                      <Box
+                        component="a"
+                        href="/schedules"
+                        sx={{
+                          ...getLinkStyle("/schedules", "#5e503f"),
+                          color: theme.palette.primary.main,
+                        }}
+                      >
+                        Schedules
+                      </Box>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">
+                      <Box
+                        component="a"
+                        href="/register"
+                        sx={{
+                          ...registerLinkStyle,
+                          color: theme.palette.primary.main
+                        }}
+                      >
+                        Register Now
+                      </Box>
+                    </Typography>
+                  </MenuItem>
+                </Menu>
               </Box>
             </Box>
           </Toolbar>
