@@ -100,7 +100,7 @@ In March of 2019, he performed in the American College Dance Association Gala at
             fontWeight: theme.typography.fontWeightBold,
             color: theme.palette.common.black,
             textAlign: "center",
-            mb: 5,
+            mb: 1,
             pr: 15,
           }}
         >
