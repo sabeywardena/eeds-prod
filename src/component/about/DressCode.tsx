@@ -85,7 +85,7 @@ const DressCode: React.FC = () => {
             all classes. No baggy clothing or street clothes are permitted at
             any time. It is important for mobility as well as to show proper
             alignment of the body while dancing. All dancers are mandated to
-            wear "Essential Dancewear", which can be purchased during Dancewear
+            wear Essential Dancewear, which can be purchased during Dancewear
             days in August <br /> <br />
             Dancers arriving to class without proper dress code attire will not
             be permitted to participate, tuition refunds will no be issued on
