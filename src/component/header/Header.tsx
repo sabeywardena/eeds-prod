@@ -5,17 +5,55 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import { usePathname } from "next/navigation";
 import theme from "@/theme";
+import { useState, useEffect } from "react";
 
 const Header: React.FC = () => {
+  const pathname = usePathname();
+  const [isTop, setIsTop] = useState(true);
+  const [inSectionOne, setInSectionOne] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const sectionHeight = window.innerHeight;
+
+      if (pathname === "/" && scrollY < sectionHeight) {
+        setIsTop(true);
+        setInSectionOne(true);
+      } else {
+        setIsTop(false);
+        setInSectionOne(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
   const appBarStyle = {
-    backgroundColor: "#fff",
+    backgroundColor:
+      pathname === "/"
+        ? isTop
+          ? inSectionOne
+            ? "black"
+            : "transparent"
+          : "#fff"
+        : "#fff",
     mt: 0,
     elevation: 0,
   };
 
-  const linkStyle = {
-    color: theme.palette.text.primary,
+  const getLinkStyle = (path: string, color: string) => ({
+    color:
+      isTop && pathname === "/"
+        ? inSectionOne
+          ? "#fff"
+          : "#000"
+        : pathname === path
+        ? color
+        : theme.palette.text.primary,
     textDecoration: "none",
     position: "relative",
     display: "inline-block",
@@ -25,26 +63,35 @@ const Header: React.FC = () => {
       position: "absolute",
       bottom: 0,
       left: 0,
-      width: "0%",
+      width: pathname === path ? "90%" : "0%",
       height: "3px",
-      backgroundColor: "black",
-      transition: "width 0.3s ease",
+      backgroundColor:
+        isTop && pathname === "/"
+          ? inSectionOne
+            ? "#fff"
+            : "#000"
+          : pathname === path
+          ? color
+          : "black",
+      transition: "width 0.3s ease, background-color 0.3s ease",
     },
     "&:hover": {
-      color: "black",
+      color: color,
       "&::after": {
         width: "90%",
+        backgroundColor: color,
       },
     },
-  };
+  });
 
   const registerLinkStyle = {
-    ...linkStyle,
-    color: "black",
-
+    ...getLinkStyle("", "black"),
     "&:hover": {
       color: "black",
       textDecoration: "none",
+      "&::after": {
+        backgroundColor: "black",
+      },
     },
     "&::after": {
       width: "90%",
@@ -56,14 +103,14 @@ const Header: React.FC = () => {
       <AppBar position="fixed" elevation={0} sx={appBarStyle}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box display="flex" alignItems="center" sx={{ flexGrow: 1, mt: 4, mb: 2}}>
+            <Box display="flex" alignItems="center" sx={{ flexGrow: 1, mt: 4, mb: 2 }}>
               <Box
                 component="a"
                 href="/"
                 sx={{
                   mr: 2,
                   ml: 5,
-                  color: theme.palette.common.black,
+                  color: isTop && pathname === "/" ? "#fff" : theme.palette.common.black,
                   textDecoration: "none",
                   fontWeight: theme.typography.fontWeightBold,
                 }}
@@ -81,7 +128,7 @@ const Header: React.FC = () => {
                 alignItems="center"
                 sx={{ flexGrow: 1, justifyContent: "center", gap: 7 }}
               >
-                <Box component="a" href="/about" sx={linkStyle}>
+                <Box component="a" href="/about" sx={getLinkStyle("/about", "#0075c4")}>
                   <Typography
                     variant="h6"
                     component="span"
@@ -90,7 +137,7 @@ const Header: React.FC = () => {
                     About
                   </Typography>
                 </Box>
-                <Box component="a" href="/gallery" sx={linkStyle}>
+                <Box component="a" href="/gallery" sx={getLinkStyle("/gallery", "#ffcf56")}>
                   <Typography
                     variant="h6"
                     component="span"
@@ -99,7 +146,7 @@ const Header: React.FC = () => {
                     Gallery
                   </Typography>
                 </Box>
-                <Box component="a" href="/the-company" sx={linkStyle}>
+                <Box component="a" href="/the-company" sx={getLinkStyle("/the-company", "#74a57f")}>
                   <Typography
                     variant="h6"
                     component="span"
@@ -108,7 +155,7 @@ const Header: React.FC = () => {
                     The Company
                   </Typography>
                 </Box>
-                <Box component="a" href="/schedules" sx={linkStyle}>
+                <Box component="a" href="/schedules" sx={getLinkStyle("/schedules", "#5e503f")}>
                   <Typography
                     variant="h6"
                     component="span"
